@@ -22,7 +22,7 @@ except Exception as e:
     model = None
 
 # Load the XGBoost Classifier for Gem Name
-CLASSIFIER_PATH = os.path.join(os.path.dirname(__file__), '../results/gem_classifier.pkl')
+CLASSIFIER_PATH = os.path.join(os.path.dirname(__file__), '../models/gem_classifier.pkl')
 try:
     with open(CLASSIFIER_PATH, 'rb') as f:
         classifier = pickle.load(f)

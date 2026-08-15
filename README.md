@@ -16,23 +16,14 @@ An Nature-Inspired Algorithms (NIA) mini-project for predicting gemstone prices.
 
 ```text
 gemstone-NIA-project/
+├── backend/                  # Flask API for live model inference
+├── dashboard-demo/           # React + Vite frontend for the UI dashboard
 ├── data/                     # Raw and preprocessed dataset files (git-ignored)
-│   ├── raw/
-│   └── processed/
 ├── models/                   # Saved trained model artifacts (.pkl, .joblib)
 ├── notebooks/                # Jupyter Notebooks for exploration and prototyping
-│   ├── sajini/               # Sajini's experimental notebooks
-│   └── buddhika/             # Buddhika's experimental notebooks
 ├── report/                   # Final project report drafts and references
 ├── results/                  # Generated evaluation metrics, plots, and saved models
 ├── src/                      # Reusable Python modules
-│   ├── config.py             # Domain mappings (categories, splits)
-│   ├── evaluate.py           # Evaluation metrics and plotting
-│   ├── ga.py                 # Genetic Algorithm implementation/wrapper
-│   ├── models.py             # Model training and prediction pipelines
-│   ├── preprocessing.py      # Data cleaning and transformations
-│   └── pso.py                # Particle Swarm Optimization implementation/wrapper
-├── .gitignore                # Git exclusions
 ├── config.py                 # Central configuration for directory paths and parameters
 ├── README.md                 # Project documentation
 └── requirements.txt          # Python dependencies
@@ -95,5 +86,21 @@ pip install -r requirements.txt
 Place your dataset inside the `data/raw/` folder (e.g., `diamonds.csv` and `cubic_zirconia.csv`).
 *Note: For the gemstone dataset, the raw input file is `cubic_zirconia.csv`, and the cleaned output file is named `gemstone_clean.csv`. For diamonds, it is `diamonds.csv`.*
 
-### 5. Run tests/exploration
-Check out the `/notebooks` folder to start exploring!
+### 5. Running the Application (Dashboard & API)
+
+To run the full stack locally, you need two terminals.
+
+**Terminal 1: Start the Backend (Flask API)**
+Make sure your virtual environment is activated.
+```bash
+python backend/app.py
+```
+*(This starts the prediction API on http://127.0.0.1:5000)*
+
+**Terminal 2: Start the Frontend (React Dashboard)**
+```bash
+cd dashboard-demo
+npm install
+npm run dev
+```
+*(This starts the UI. Open http://localhost:5173 in your browser)*
