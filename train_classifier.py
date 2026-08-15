@@ -34,8 +34,7 @@ model = XGBClassifier(
 model.fit(X, y)
 
 os.makedirs('models', exist_ok=True)
-model_path = 'models/gem_classifier.pkl'
-with open(model_path, 'wb') as f:
-    pickle.dump(model, f)
+model_path = 'models/gem_classifier.json'
+model.save_model(model_path)
     
 print(f"Classifier saved successfully to {model_path}!")

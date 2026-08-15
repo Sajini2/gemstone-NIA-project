@@ -22,10 +22,11 @@ except Exception as e:
     model = None
 
 # Load the XGBoost Classifier for Gem Name
-CLASSIFIER_PATH = os.path.join(os.path.dirname(__file__), '../models/gem_classifier.pkl')
+from xgboost import XGBClassifier
+CLASSIFIER_PATH = os.path.join(os.path.dirname(__file__), '../models/gem_classifier.json')
 try:
-    with open(CLASSIFIER_PATH, 'rb') as f:
-        classifier = pickle.load(f)
+    classifier = XGBClassifier()
+    classifier.load_model(CLASSIFIER_PATH)
 except Exception as e:
     print(f"Error loading classifier model: {e}")
     classifier = None
