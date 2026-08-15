@@ -8,3 +8,6 @@ joblib
 deap
 pyswarms
 jupyterlab
+flask
+flask-cors
+python-dotenv
