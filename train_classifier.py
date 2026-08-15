@@ -33,8 +33,8 @@ model = XGBClassifier(
 
 model.fit(X, y)
 
-os.makedirs('results', exist_ok=True)
-model_path = 'results/gem_classifier.pkl'
+os.makedirs('models', exist_ok=True)
+model_path = 'models/gem_classifier.pkl'
 with open(model_path, 'wb') as f:
     pickle.dump(model, f)
     
