@@ -69,8 +69,12 @@ def predict():
         predicted_price = model.predict(features)[0]
         predicted_price = max(0, float(predicted_price))
         
+        # Add price to features for the classifier
+        classifier_features = features.copy()
+        classifier_features['price'] = predicted_price
+        
         # Predict Gem Name (1 = Diamond, 0 = Cubic Zirconia)
-        predicted_class = classifier.predict(features)[0]
+        predicted_class = classifier.predict(classifier_features)[0]
         gem_name = "Diamond" if predicted_class == 1 else "Cubic Zirconia"
         
         response_data = {

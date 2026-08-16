@@ -6,12 +6,21 @@ const RangeSlider = ({ label, name, min, max, step, value, onChange }) => (
   <div className="space-y-3">
     <div className="flex justify-between items-center text-sm font-bold text-stone-400">
       <label>{label}</label>
-      <span className="font-mono bg-stone-800/50 px-3 py-1 rounded-full text-stone-300 border border-stone-700/50">{value}</span>
+      <input
+        type="number"
+        name={name}
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={onChange}
+        className="font-mono bg-stone-800/50 px-3 py-1 rounded-lg text-stone-300 border border-stone-700/50 w-24 text-right outline-none focus:border-rose-500/50 focus:ring-1 focus:ring-rose-500/50 transition-all"
+      />
     </div>
     <div className="relative w-full h-2.5 bg-[#1c1917] rounded-full overflow-hidden border border-stone-800/50">
       <div 
         className="absolute top-0 left-0 h-full bg-gradient-to-r from-rose-400 to-orange-400 transition-all duration-150"
-        style={{ width: `${((value - min) / (max - min)) * 100}%` }}
+        style={{ width: `${((parseFloat(value || 0) - min) / (max - min)) * 100}%` }}
       ></div>
       <input
         type="range"
@@ -38,7 +47,7 @@ export default function PredictorForm() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: parseFloat(value) });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handlePredict = async (e) => {
